@@ -3,8 +3,8 @@ export async function getAllWords() {
     let mongoClient;
 
         mongoClient = await connectToMongoDB(process.env.DB_URI);
-        const words = await mongoClient.db('words')
-        .collection('pendu')
+        const words = await mongoClient.db(process.env.DB_NAME)
+        .collection('words')
         .aggregate([
             {
             $group:
@@ -25,3 +25,15 @@ export async function getAllWords() {
 
 }
 
+export async function totalWord() {
+
+       let mongoClient = await connectToMongoDB(process.env.DB_URI);
+        // const total = mongoClient.db.collection('words').countDocuments();
+        const database = mongoClient.db(process.env.DB_NAME);
+        const words = database.collection('words');
+         const total = await words.estimatedDocumentCount();
+        
+       return total;
+
+ 
+}
