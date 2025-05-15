@@ -1,29 +1,29 @@
 {
-  "name": "repository",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JulienPoirierWebDev/pendu-MVC.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JulienPoirierWebDev/pendu-MVC/issues"
-  },
-  "homepage": "https://github.com/JulienPoirierWebDev/pendu-MVC#readme",
-  "dependencies": {
-    "express": "^5.1.0",
-    "dotenv": "^16.5.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-
-  }
+	"name": "repository",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JulienPoirierWebDev/pendu-MVC.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/JulienPoirierWebDev/pendu-MVC/issues"
+	},
+	"homepage": "https://github.com/JulienPoirierWebDev/pendu-MVC#readme",
+	"dependencies": {
+		"express": "^5.1.0",
+		"dotenv": "^16.5.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.10"
+	},
+	"type": "module"
 }
