@@ -6,19 +6,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-	res.send('Hello World!');
-});
 
 
-
+app.get('/', (req,res) => res.send("Bienvenue"));
 
 
 app.use('/words', wordsRouter);
 app.use((req, res) => {
-	res.json({ message: 'page 404' });
+res.json({ message: 'page 404' });
 });
 
 app.listen(process.env.PORT, () => {
 	console.log(`serveur lancé sur le port ${process.env.PORT}`);
-});
+
+})
