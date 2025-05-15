@@ -5,8 +5,21 @@ export async function getAllWords() {
         mongoClient = await connectToMongoDB(process.env.DB_URI);
         const words = await mongoClient.db('words')
         .collection('pendu')
-        .find()
-        .sort({ id: 1 })
+        .aggregate([
+            {
+            $group:
+            /**
+            * specifications: The fields to
+            * include or exclude.
+            */
+            {
+            _id: null,
+            expressions: {
+            $push: "$M"
+            }
+            }
+            }
+            ])
         .toArray();
         return words;
 
