@@ -1,0 +1,9 @@
+.hidden{
+    opacity: 0;
+}
+
+.cartes div{
+    border: 2px solid black;
+    padding: 5px;
+    width: 20px;
+}

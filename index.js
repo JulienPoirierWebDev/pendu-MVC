@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => res.render('index', {}));
 app.get('/pendu', (req, res) => res.render('pendu', {}));
+app.get('/memory', (req, res) => res.render('memory', {}));
+
 
 app.use('/words', wordsRouter);
 app.use((req, res) => {
