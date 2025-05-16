@@ -4,6 +4,8 @@ async function game() {
 	let rejouer = document.querySelector('#rejouer');
 	let h3 = document.querySelector('h3');
 	let gamestart = document.querySelector('#gamestart');
+	let debutDePartie = false;
+	let idGame;
 
 	start.addEventListener('click', (event) => {
 		gamestart.style.display = 'flex';
@@ -89,6 +91,8 @@ async function game() {
 	}
 
 	const clickButton = (evenment) => {
+		// si debutDePartie est false, alors je créer une partie -> POST /games/
+		// je stocke l'id de la partie dans idGame;
 		let lettrePropose = evenment.target.textContent;
 		console.log(lettrePropose);
 
@@ -137,6 +141,7 @@ async function game() {
 		console.log(motCrepte, motCache);
 
 		if (motCrepte === enleverAccentsMot(motCache)) {
+			// renvoyer une requête sur PATCH /games/:id (avec idGame) où on remplace victoire par true
 			result.innerHTML = 'YOU WEEN';
 			h3.style.color = 'green';
 			allButton.forEach((oneButton) => {
@@ -159,25 +164,25 @@ async function game() {
 		ajouterUnEvenmentSurLeButton(button);
 	}
 
-	rejouer.addEventListener('click', async(event) => {
+	rejouer.addEventListener('click', async (event) => {
 		//index = Math.floor(Math.random() * mots.length);
 		const wordDef = await apiword();
-	console.log(wordDef);
-	 motCache = wordDef.mot.toUpperCase();
-	 motCrepte = motCache
-		.split('')
-		.map((letter) => {
-			if (letter === ' ') {
-				return ' ';
-			} else if (letter === '-') {
-				return '-';
-			} else if (letter === "'") {
-				return "'";
-			} else {
-				return '_';
-			}
-		})
-		.join('');
+		console.log(wordDef);
+		motCache = wordDef.mot.toUpperCase();
+		motCrepte = motCache
+			.split('')
+			.map((letter) => {
+				if (letter === ' ') {
+					return ' ';
+				} else if (letter === '-') {
+					return '-';
+				} else if (letter === "'") {
+					return "'";
+				} else {
+					return '_';
+				}
+			})
+			.join('');
 
 		affichage.textContent = motCrepte;
 		console.log(motCache);

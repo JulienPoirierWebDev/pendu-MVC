@@ -1,59 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jeu du Pendu – Formation M2I</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
-  <header>
-    <h1>🎯 Jeu du Pendu</h1>
-    <p class="baseline">Un projet pédagogique en Node.js | Formation M2I</p>
-  </header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jeu du Pendu – Formation M2I</title>
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>🎯 Jeu du Pendu</h1>
+			<p class="baseline">
+				Un projet pédagogique en Node.js | Formation M2I
+			</p>
+		</header>
 
-  <main>
-    <section class="intro">
-      <h2>Bienvenue sur notre jeu du pendu</h2>
-      <p>
-        Ce projet a été développé dans le cadre d’un cours de développement web back-end avec
-        <strong>Node.js et Express</strong>, dispensé chez <strong>M2I Formation</strong>.
-        Il vise à illustrer les notions de routage, d’API, et d’interaction côté client.
-      </p>
-    </section>
+		<main>
+			<section class="intro">
+				<h2>Bienvenue sur notre jeu du pendu</h2>
+				<p>Nombre total de partie<%= partiesTotales %></p>
+				<p>Nombre total de partie<%= partiesPerdues %></p>
+				<p>Nombre total de partie<%= partiesGagnées %></p>
 
-    <section class="difficulties">
-      <h2>Choisissez votre niveau</h2>
-      <div class="buttons">
-        <a href="/pendu" class="btn easy">Jouer au pendu</a>
-      </div>
-      <div class="buttons">
-        <a href="/memory" class="btn hard">Jouer au memory</a>
-      </div>
-    </section>
+				<p>
+					Ce projet a été développé dans le cadre d’un cours de
+					développement web back-end avec
+					<strong>Node.js et Express</strong>, dispensé chez
+					<strong>M2I Formation</strong>. Il vise à illustrer les
+					notions de routage, d’API, et d’interaction côté client.
+				</p>
+			</section>
 
-    <section class="features">
-      <h2>Fonctionnalités du projet</h2>
-      <ul>
-        <li>🔡 Mots et expressions aléatoires via une API maison</li>
-        <li>📚 Plus de 40 000 mots disponibles</li>
-        <li>🎮 2 niveaux de difficulté au choix</li>
-        <li>💡 Code clair et pédagogique, idéal pour progresser</li>
-      </ul>
-    </section>
+			<section class="difficulties">
+				<h2>Choisissez votre niveau</h2>
+				<div class="buttons">
+					<a href="/pendu" class="btn easy">Jouer au pendu</a>
+				</div>
+				<div class="buttons">
+					<a href="/memory" class="btn hard">Jouer au memory</a>
+				</div>
+			</section>
 
-    <section class="about">
-      <h2>À propos de la formation</h2>
-      <p>
-        M2I Formation est un centre de formation professionnelle reconnu, proposant des cursus intensifs
-        en développement web, systèmes, cybersécurité, et bien plus encore. Ce projet fait partie d’un module d’apprentissage
-        centré sur les APIs REST, la programmation asynchrone, et la mise en pratique concrète de Node.js.
-      </p>
-    </section>
-  </main>
+			<section class="features">
+				<h2>Fonctionnalités du projet</h2>
+				<ul>
+					<li>
+						🔡 Mots et expressions aléatoires via une API maison
+					</li>
+					<li>📚 Plus de 40 000 mots disponibles</li>
+					<li>🎮 2 niveaux de difficulté au choix</li>
+					<li>💡 Code clair et pédagogique, idéal pour progresser</li>
+				</ul>
+			</section>
 
-  <footer>
-    <p>&copy; 2025 - Développé par des apprenants M2I - Projet Node.js / Express</p>
-  </footer>
-</body>
+			<section class="about">
+				<h2>À propos de la formation</h2>
+				<p>
+					M2I Formation est un centre de formation professionnelle
+					reconnu, proposant des cursus intensifs en développement
+					web, systèmes, cybersécurité, et bien plus encore. Ce projet
+					fait partie d’un module d’apprentissage centré sur les APIs
+					REST, la programmation asynchrone, et la mise en pratique
+					concrète de Node.js.
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<p>
+				&copy; 2025 - Développé par des apprenants M2I - Projet Node.js
+				/ Express
+			</p>
+		</footer>
+	</body>
 </html>
