@@ -10,6 +10,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => res.render('index', {}));
+app.get('/pendu', (req, res) => res.render('pendu', {}));
 
 app.use('/words', wordsRouter);
 app.use((req, res) => {
