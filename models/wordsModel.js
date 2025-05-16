@@ -37,3 +37,12 @@ export async function totalWord() {
 
  
 }
+
+export async function getWordById(id) {
+    let mongoClient = await connectToMongoDB(process.env.DB_URI);
+    const database =  mongoClient.db(process.env.DB_NAME)
+    const word = await database.collection('words').findOne({ ID: id });
+    return word;
+}
+
+
