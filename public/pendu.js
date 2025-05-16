@@ -159,10 +159,26 @@ async function game() {
 		ajouterUnEvenmentSurLeButton(button);
 	}
 
-	rejouer.addEventListener('click', (event) => {
-		index = Math.floor(Math.random() * mots.length);
-		motCache = mots[index];
-		motCrepte = '_'.repeat(motCache.length);
+	rejouer.addEventListener('click', async(event) => {
+		//index = Math.floor(Math.random() * mots.length);
+		const wordDef = await apiword();
+	console.log(wordDef);
+	 motCache = wordDef.mot.toUpperCase();
+	 motCrepte = motCache
+		.split('')
+		.map((letter) => {
+			if (letter === ' ') {
+				return ' ';
+			} else if (letter === '-') {
+				return '-';
+			} else if (letter === "'") {
+				return "'";
+			} else {
+				return '_';
+			}
+		})
+		.join('');
+
 		affichage.textContent = motCrepte;
 		console.log(motCache);
 		let allButton = document.querySelectorAll('.disabled');
