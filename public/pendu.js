@@ -134,7 +134,9 @@ async function game() {
 					});
 			}
 		}
-		if (motCrepte === motCache) {
+		console.log(motCrepte, motCache);
+
+		if (motCrepte === enleverAccentsMot(motCache)) {
 			result.innerHTML = 'YOU WEEN';
 			h3.style.color = 'green';
 			allButton.forEach((oneButton) => {
@@ -197,4 +199,16 @@ async function apiword() {
 
 function sansAccent(lettre) {
 	return lettre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function enleverAccentsMot(mot) {
+	const array = mot.split('');
+
+	const arrayWithout = array.map((lettre) => {
+		return lettre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+	});
+
+	const newWord = arrayWithout.join('');
+
+	return newWord;
 }
