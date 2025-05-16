@@ -1,24 +1,20 @@
-
-
-// start 
-let start = document.querySelector('#start');
-let rejouer = document.querySelector('#rejouer');
-let h3 = document.querySelector('h3');
-let gamestart = document.querySelector('#gamestart');
-
-start.addEventListener('click', (event) =>{
+async function game() {
+    
+    
+    // start 
+    let start = document.querySelector('#start');
+    let rejouer = document.querySelector('#rejouer');
+    let h3 = document.querySelector('h3');
+    let gamestart = document.querySelector('#gamestart');
+    
+    start.addEventListener('click', (event) =>{
     gamestart.style.display = 'flex'
     start.style.display = 'none'
     
 })
-
-
-
-
-
-
 //  game 
-
+const wordDef = await apiword();
+console.log(wordDef);
 
 const mots = [
     "PYTHON", "JAVASCRIPT", "CLOUD", "DOCKER", "KUBERNETES", "MICROSERVICES", "DEVOPS", "DATABASE", 
@@ -69,43 +65,28 @@ const mots = [
     "CONTRACT", "IMPLEMENTATION", "DESIGNPATTERNS", "COMPUTERNETWORK", "INTERNETPROTOCOLS", "WEBSECURITY", 
     "SESSIONMANAGEMENT", "VULNERABILITY", "SECURITYALERT", "INFRASTRUCTURE", "PERSISTENCE", "CONCURRENCY", 
     "DATAPROCESSING", "PERFORMANCEOPTIMIZATION", "LOADBALANCING", "ENCODE", "DECODE"
-  ]
-  let index = Math.floor(Math.random() * mots.length)
-  let motCache = mots[index]
-  let leMotCache = document.querySelector('#motCache')
-  leMotCache.textContent =  `le mot caché est : ${motCache}` 
-  console.log(motCache);
-  
-// const motCache = "INFORMATIQUE"
+]
+
+let index = Math.floor(Math.random() * mots.length)
+let motCache = wordDef.mot.toUpperCase()
+let leMotCache = document.querySelector('#motCache')
+leMotCache.textContent =  `le mot caché est : ${motCache}` 
+console.log(motCache);
+
+
 let motCrepte = "_".repeat(motCache.length)
-// console.log(motCrepte);
+
 
 let affichage = document.querySelector("#affichage")
 const result = document.querySelector("#result")
 affichage.textContent = motCrepte
 
-// let pendu1 = document.querySelector("#pendu-1")
-// let pendu2 = document.querySelector("#pendu-2")
-// let pendu3 = document.querySelector("#pendu-3")
-// let pendu4 = document.querySelector("#pendu-4")
-// let pendu5 = document.querySelector("#pendu-5")
-// let pendu6 = document.querySelector("#pendu-6")
-// let pendu7 = document.querySelector("#pendu-7")
-// let pendu8 = document.querySelector("#pendu-8")
-// let pendu9 = document.querySelector("#pendu-9")
-// let pendu10 = document.querySelector("#pendu-10")
 let pendu = [document.querySelector(".pendu-1"),document.querySelector(".pendu-2"),document.querySelector(".pendu-3"),document.querySelector(".pendu-4"),
     document.querySelector(".pendu-5"),document.querySelector(".pendu-6"),document.querySelector(".pendu-7"),document.querySelector(".pendu-8"),
     document.querySelector(".pendu-9"), document.querySelector(".pendu-10")
 ]
-// console.log(pendu);
-
-
 
 let nombreDeMauvaiseReponse = 0
- 
-
- 
 
 const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const clavier = document.querySelector("#clavier")
@@ -114,79 +95,61 @@ function ajouterUnEvenmentSurLeButton(lettre) {
     
     
     lettre.addEventListener('click', clickButton 
-)    
+    )    
 }
 
 const clickButton = (evenment)=>{
-    // console.log("j'ai click sur le button");
-    // console.log(evenment.target.textContent);
     let lettrePropose = evenment.target.textContent 
-
-    // for (const element of motCache) {
-    //     if(element == lettrePropose){
-    //      console.log();
-            
-          
-            
-    //    }   }
-    // let motCrepte2 = motCrepte
     let mauvaiseLettre 
     let lettreTrouve = false 
     for (let i = 0; i < motCache.length; i++) {
         if (motCache[i] === lettrePropose) {
             motCrepte[i] = lettrePropose
-            // console.log(motCrepte, motCrepte[i]);
-            // console.log(lettrePropose);
             motCrepte = motCrepte.substring(0, i) + lettrePropose + motCrepte.substring(i + 1);
-            // console.log(motCrepte);
             affichage.textContent = motCrepte
-            lettreTrouve =true
-       
-            
-            
-            
+            lettreTrouve =true    
         }
         
     }
     let allButton = document.querySelectorAll(".disabled")
-
+    
     if (lettreTrouve == false) {
         mauvaiseLettre = lettrePropose
         propositionMauvaise.push(mauvaiseLettre)
         if (nombreDeMauvaiseReponse < 8) {
-             nombreDeMauvaiseReponse++
-        pendu[nombreDeMauvaiseReponse].classList.remove("hidden")
+            nombreDeMauvaiseReponse++
+            pendu[nombreDeMauvaiseReponse].classList.remove("hidden")
         }else{
             nombreDeMauvaiseReponse++
             pendu[nombreDeMauvaiseReponse].classList.remove("hidden")
             result.innerHTML = "YOU LOST"
             h3.style.color = "red"
-
-          
+            
+            
             
             allButton.forEach(oneButton => {
                 oneButton.setAttribute("disabled", "true");
-
+                
                 
             });
             document.getElementById("popup1").style.visibility = "visible";
             document.getElementById("popup1").style.opacity = 1;
-          
-          
-          document.querySelector(".close").addEventListener("click", function() {
-            document.getElementById("popup1").style.visibility = "hidden";
-            document.getElementById("popup1").style.opacity = 0;
-          
-          });
-      
-
+            
+            
+            document.querySelector(".close").addEventListener("click", function() {
+                document.getElementById("popup1").style.visibility = "hidden";
+                document.getElementById("popup1").style.opacity = 0;
+                
+            });
+            
+            
         }
-       
-
-
-
         
-
+        
+        
+        
+        
+        
     }
     if(motCrepte === motCache){
         result.innerHTML = "YOU WEEN"
@@ -198,18 +161,18 @@ const clickButton = (evenment)=>{
         document.getElementById("popup1").style.opacity = 1;
     }
     evenment.target.setAttribute("disabled","true")
-
-
     
     
-   
+    
+    
+    
     
     // console.log(propositionMauvaise);
-    }
+}
 
 
 
-    
+
 
 
 
@@ -220,10 +183,10 @@ for (const car of alphabet) {
     button.textContent = car 
     clavier.appendChild(button)
     ajouterUnEvenmentSurLeButton(button)
-
-
-
-
+    
+    
+    
+    
 }
 
 rejouer.addEventListener('click', (event)=>{
@@ -240,7 +203,7 @@ rejouer.addEventListener('click', (event)=>{
     document.getElementById("popup1").style.opacity = 0;
     pendu.forEach(onePendu => {
         onePendu.classList.add("hidden");
-
+        
         
     });
     nombreDeMauvaiseReponse = 0
@@ -252,8 +215,20 @@ rejouer.addEventListener('click', (event)=>{
 
 
 // function testAlphabet(lettre) {
-//     if(clickAlphabet(lettre)  ){
-
-//     }
-// }
-
+    //     if(clickAlphabet(lettre)  ){
+        
+    //     }
+    // }
+    
+    
+}
+game();
+async function apiword() {
+    try {
+    const response = await fetch('http://localhost:3000/words/random')
+    const mots = await response.json()
+    return mots
+    } catch (error) {
+        console.log(error);
+    }
+}
